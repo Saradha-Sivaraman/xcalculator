@@ -1,69 +1,68 @@
 import React, { useState } from 'react';
 import './App.css'
 function App() {
-  const [value, setValue] = useState('');
+  const [result, setResult] = useState('')
+ 
+  
+  const handleCLick = (e)=>{
+    setResult(result.concat(e.target.name));
+    console.log(result.concat(e.target.name))
+  }
+  const clear=()=>{
+    setResult('')
+  }
+  const deleteScreen=()=>{
+    setResult(result.slice(0, - 1))
+  }
   const calculate=()=>{
     try{
-
-      if(value==="")
-        {
-         setValue('Error')
-        }
-     
-      if(value!=="")
-      setValue(eval(value))
-     
+      setResult(eval(result).toString())
     }catch(err){
-
-    
-      setValue('syntax error')
-      
+      setResult('Error')
     }
   }
 
   return (
     <div className="container">
-      <div className="calculator">
-        <form action="">
-          <h1>React calculator</h1>
-          <div className='display'>
-           <input type= "text" value={value}/>
-            </div>
+      <div>
+     
+      <input type={'text'} value={result} />
+      
             <div  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginTop:'5px',
-                    color:'grey'
-                }}>{value}</div>
+
+                    color:'grey',
+                   
+                }}>{result}</div>
              <div>
-            <input type="button" value="7" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="8" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="9" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="+" onClick={e => setValue(value + e.target.value)}/>
+             <button name='7' onClick={handleCLick} >7</button>
+        <button name='8' onClick={handleCLick} >8</button>
+        <button name='9' onClick={handleCLick} >9</button>
+        <button name='+' onClick={handleCLick} >+</button>
           </div>
           <div>
-            <input type="button" value="4" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="5" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="6" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="-" onClick={e => setValue(value + e.target.value)}/>
+          <button name='4' onClick={handleCLick} >4</button>
+        <button name='5' onClick={handleCLick} >5</button>
+        <button name='6' onClick={handleCLick} >6</button>
+        <button name='-' onClick={handleCLick} >-</button>
           </div>
           <div>
-            <input type="button" value="1" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="2" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="3" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="*" onClick={e => setValue(value + e.target.value)}/>
+          <button name='1' onClick={handleCLick} >1</button>
+        <button name='2' onClick={handleCLick} >2</button>
+        <button name='3' onClick={handleCLick} >3</button>
+        <button name='*' onClick={handleCLick} >*</button>
           </div>
           <div>
-            <input type="button" value="C" onClick={e => setValue('')}/>
-            <input type="button" value="0" onClick={e => setValue(value + e.target.value)}/>
-            <input type="button" value="="  onClick={calculate}/>
-            <input type="button" value="/" onClick={e => setValue(value + e.target.value)}/>
+          <button onClick={clear} >C</button>
+        <button name='0' onClick={handleCLick} >0</button>
+        <button onClick={calculate} >=</button>
+        <button name='/' onClick={handleCLick} >/</button>
           </div>
-        </form>
+      
       </div>
     </div>
   );
 }
 
 export default App;
+
+
