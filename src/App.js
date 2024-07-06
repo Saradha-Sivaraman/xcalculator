@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="container">
       <div>
-     
+        <h1>React Calculator</h1>
       <input type={'text'} value={result} />
       
             <div  style={{
