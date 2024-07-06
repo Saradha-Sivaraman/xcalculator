@@ -4,23 +4,20 @@ function App() {
   const [value, setValue] = useState('');
   const calculate=()=>{
     try{
-     
-      setValue(eval(value))
+
       if(value==="")
         {
          setValue('Error')
         }
-
+     
+      if(value!=="")
+      setValue(eval(value))
+     
     }catch(err){
 
-      if(value==="")
-        {
-         setValue('Error')
-        }
-        else 
-        {
+    
       setValue('syntax error')
-        }
+      
     }
   }
 
